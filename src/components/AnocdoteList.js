@@ -4,7 +4,7 @@ import { incrementVote } from '../reducers/anecdoteReducer'
 
 const AnocdoteList = () => {
   const anecdotes = useSelector(state => {
-    return state.sort((anocA, anocB) => {
+    return state.anecdotes.sort((anocA, anocB) => {
       if(anocA.votes > anocB.votes) return -1
       if(anocA.votes < anocB.votes) return 1
       return 0
