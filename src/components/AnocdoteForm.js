@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { createAnec } from '../reducers/anecdoteReducer'
+import { noticeForCreate, clearFlash } from '../reducers/notificationReducer'
 
 const AnocdoteForm = () => {
   const dispatch = useDispatch()
@@ -9,6 +10,8 @@ const AnocdoteForm = () => {
     e.preventDefault()
     const anec = e.target.anec.value
     dispatch(createAnec(anec))
+    dispatch(noticeForCreate(anec))
+    setTimeout(() => dispatch(clearFlash()), 5000)
   }
 
   return(
