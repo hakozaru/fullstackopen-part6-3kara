@@ -10,8 +10,7 @@ const AnocdoteForm = () => {
     e.preventDefault()
     const anec = e.target.anec.value
     dispatch(createAnec(anec))
-    dispatch(noticeForCreate(anec))
-    setTimeout(() => dispatch(clearFlash()), 5000)
+    dispatch(noticeForCreate(anec, 5))
   }
 
   return(

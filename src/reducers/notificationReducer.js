@@ -13,10 +13,14 @@ const reducer = (state = '', action) => {
   }
 }
 
-export const noticeForVote = title => {
-  return {
-    type: 'VOTE',
-    data: { title }
+export const noticeForVote = (title, sec) => {
+  return async dispatch => {
+    dispatch({
+      type: 'VOTE',
+      data: { title }
+    })
+    await new Promise(resolve => setTimeout(resolve, sec * 1000))
+    dispatch({ type: 'CLEAR' })
   }
 }
 
@@ -26,10 +30,14 @@ export const clearFlash = () => {
   }
 }
 
-export const noticeForCreate = title => {
-  return {
-    type: 'CREATE',
-    data: { title }
+export const noticeForCreate = (title, sec) => {
+  return async dispatch => {
+    dispatch({
+      type: 'CREATE',
+      data: { title }
+    })
+    await new Promise(resolve => setTimeout(resolve, sec * 1000))
+    dispatch({ type: 'CLEAR' })
   }
 }
 

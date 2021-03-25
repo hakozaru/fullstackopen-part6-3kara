@@ -20,8 +20,7 @@ const AnocdoteList = () => {
   const dispatch = useDispatch()
   const vote = (anecdote) => {
     dispatch(incrementVote(anecdote))
-    dispatch(noticeForVote(anecdote.content))
-    setTimeout(() => dispatch(clearFlash()), 5000)
+    dispatch(noticeForVote(anecdote.content, 5))
   }
 
   return(
