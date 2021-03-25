@@ -2,7 +2,6 @@ import React from 'react'
 import { useDispatch } from 'react-redux'
 import { createAnec } from '../reducers/anecdoteReducer'
 import { noticeForCreate, clearFlash } from '../reducers/notificationReducer'
-import anecService from '../services/anecdotes'
 
 const AnocdoteForm = () => {
   const dispatch = useDispatch()
@@ -10,9 +9,8 @@ const AnocdoteForm = () => {
   const addAnec = async e => {
     e.preventDefault()
     const anec = e.target.anec.value
-    const newAnec = await anecService.createNew(anec)
-    dispatch(createAnec(newAnec))
-    dispatch(noticeForCreate(newAnec.content))
+    dispatch(createAnec(anec))
+    dispatch(noticeForCreate(anec))
     setTimeout(() => dispatch(clearFlash()), 5000)
   }
 
