@@ -13,14 +13,20 @@ const reducer = (state = '', action) => {
   }
 }
 
+let timeoutID = null
+
 export const noticeForVote = (title, sec) => {
   return async dispatch => {
     dispatch({
       type: 'VOTE',
       data: { title }
     })
-    await new Promise(resolve => setTimeout(resolve, sec * 1000))
-    dispatch({ type: 'CLEAR' })
+    clearTimeout(timeoutID)
+    timeoutID = setTimeout(() => {
+      dispatch({
+        type: 'CLEAR',
+      })
+    }, sec * 1000)
   }
 }
 
